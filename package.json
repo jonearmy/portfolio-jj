@@ -1,1 +1,8 @@
-
+{
+  "name": "portfolio-jj",
+  "description": "a really cool portfolio",
+  "version": "1.0.0",
+  "engines": {
+    "node": "10.13.0"
+  }
+}
