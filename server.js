@@ -1,22 +1,17 @@
-// Modules
-const http = require('http');
-const fs = require('fs');
+var express = require('express');
+var app = express();
 
-// Server configuration
-const hostname = '127.0.0.1';
-const port = 3000;
+// set port
+ver port = process.env.PORT || 8080
 
-// Render page
-fs.readFile('./index.html', function (err, html) {
-    if (err) {
-        throw err; 
-    }       
-    const server = http.createServer(function(request, response) {  
-        response.writeHeader(200, {"Content-Type": "text/html"});  
-        response.write(html);  
-        response.end();  
-    }).listen(port, hostname, () => {
-    	// Console
-	  	console.log(`Server running at http://${hostname}:${port}/`);
-	});
-});
+app.use(express.static(__dirname +"/public"));
+
+// routes
+
+app.get("/", function(req, res) {
+	res.render("index");
+})
+
+app.listen(port, function() {
+	console.log("app running");
+})
